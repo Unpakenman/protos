@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package proto.sso.rpc;
+option go_package = "proto.sso.rpc";
+
+message RegisterRequest{
+  //Users phone
+  string phone = 1;
+  //Users email
+  string email = 2;
+  //Users password
+  string password = 3;
+  //Users IP
+  string ip = 4;
+  //Users firstName
+  string firstname = 5;
+  //Users lastname
+  string lastname = 6;
+  //Users middlename
+  string middlename = 7;
+  //users birthdate
+  string birthdate = 8;
+}
+message RegisterResponse{
+  //id зарегестрированного пользователя
+  int64 user_id = 1;
+}
+
+

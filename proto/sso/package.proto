@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package proto.sso;
+option go_package = "proto.sso";
+
+import "proto/sso/rpc/register.proto";
+import "proto/sso/rpc/login.proto";
+import "proto/sso/rpc/isadmin.proto";
+
+
+service Auth {
+  rpc Register(proto.sso.rpc.RegisterRequest) returns (proto.sso.rpc.RegisterResponse);
+  rpc IsAdmin(proto.sso.rpc.IsAdminRequest) returns (proto.sso.rpc.IsAdminResponse);
+  rpc Login(proto.sso.rpc.LoginRequest) returns (proto.sso.rpc.LoginResponse);
+
+}

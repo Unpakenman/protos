@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package proto.sso.rpc;
+option go_package = "proto.sso.rpc";
+
+message LoginRequest{
+  //Users email
+  string phone = 1;
+  //Users password
+  string password = 2;
+}
+message LoginResponse{
+  //jwt токен пользователя
+  string token= 1;
+}

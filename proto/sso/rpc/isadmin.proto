@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package proto.sso.rpc;
+option go_package = "proto.sso.rpc";
+
+message IsAdminRequest{
+  //id пользователя
+  int64 user_id = 1;
+}
+message IsAdminResponse{
+  //является ли пользователь админом
+  bool is_admin= 1;
+}
