@@ -10,32 +10,45 @@ service Auth {
 }
 
 message RegisterRequest{
+  //Users phone
+  string phone = 1;
   //Users email
-  string email = 1;
+  string email = 2;
   //Users password
-  string password = 2;
+  string password = 3;
+  //Users IP
+  string ip = 4;
+  //Users firstName
+  string firstname = 5;
+  //Users lastname
+  string lastname = 6;
+  //Users middlename
+  string middlename = 7;
+  //users birthdate
+  string birthdate = 8;
 }
-
 message RegisterResponse{
   //id зарегестрированного пользователя
   int64 user_id = 1;
 }
+
+
 message IsAdminRequest{
   //id пользователя
   int64 user_id = 1;
 }
-
 message IsAdminResponse{
   //является ли пользователь админом
   bool is_admin= 1;
 }
+
+
 message LoginRequest{
   //Users email
-  string email = 1;
+  string phone = 1;
   //Users password
   string password = 2;
 }
-
 message LoginResponse{
   //jwt токен пользователя
   string token= 1;
