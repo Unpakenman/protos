@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package proto.sso.rpc;
-option go_package = "proto.sso.rpc";
+option go_package = "github.com/Unpakenman/protos/proto/sso/rpc";
 
 message RegisterRequest{
   //Users phone

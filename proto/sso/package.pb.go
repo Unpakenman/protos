@@ -4,12 +4,13 @@
 // 	protoc        v5.29.3
 // source: sso/package.proto
 
-package proto_sso
+package sso
 
 import (
+	rpc "github.com/Unpakenman/protos/proto/sso/rpc"
+	rpc1 "github.com/username/Unpakenman/proto/sso/rpc"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	proto_sso_rpc "proto.sso.rpc"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -29,15 +30,15 @@ const file_sso_package_proto_rawDesc = "" +
 	"\x04Auth\x12K\n" +
 	"\bRegister\x12\x1e.proto.sso.rpc.RegisterRequest\x1a\x1f.proto.sso.rpc.RegisterResponse\x12H\n" +
 	"\aIsAdmin\x12\x1d.proto.sso.rpc.IsAdminRequest\x1a\x1e.proto.sso.rpc.IsAdminResponse\x12B\n" +
-	"\x05Login\x12\x1b.proto.sso.rpc.LoginRequest\x1a\x1c.proto.sso.rpc.LoginResponseB\vZ\tproto.ssob\x06proto3"
+	"\x05Login\x12\x1b.proto.sso.rpc.LoginRequest\x1a\x1c.proto.sso.rpc.LoginResponseB(Z&github.com/Unpakenman/protos/proto/ssob\x06proto3"
 
 var file_sso_package_proto_goTypes = []any{
-	(*proto_sso_rpc.RegisterRequest)(nil),  // 0: proto.sso.rpc.RegisterRequest
-	(*proto_sso_rpc.IsAdminRequest)(nil),   // 1: proto.sso.rpc.IsAdminRequest
-	(*proto_sso_rpc.LoginRequest)(nil),     // 2: proto.sso.rpc.LoginRequest
-	(*proto_sso_rpc.RegisterResponse)(nil), // 3: proto.sso.rpc.RegisterResponse
-	(*proto_sso_rpc.IsAdminResponse)(nil),  // 4: proto.sso.rpc.IsAdminResponse
-	(*proto_sso_rpc.LoginResponse)(nil),    // 5: proto.sso.rpc.LoginResponse
+	(*rpc.RegisterRequest)(nil),  // 0: proto.sso.rpc.RegisterRequest
+	(*rpc1.IsAdminRequest)(nil),  // 1: proto.sso.rpc.IsAdminRequest
+	(*rpc.LoginRequest)(nil),     // 2: proto.sso.rpc.LoginRequest
+	(*rpc.RegisterResponse)(nil), // 3: proto.sso.rpc.RegisterResponse
+	(*rpc1.IsAdminResponse)(nil), // 4: proto.sso.rpc.IsAdminResponse
+	(*rpc.LoginResponse)(nil),    // 5: proto.sso.rpc.LoginResponse
 }
 var file_sso_package_proto_depIdxs = []int32{
 	0, // 0: proto.sso.Auth.Register:input_type -> proto.sso.rpc.RegisterRequest

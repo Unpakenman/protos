@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package proto.sso;
-option go_package = "github.com/username/protos/proto/sso";
+option go_package = "github.com/Unpakenman/protos/proto/sso";
 
 import "sso/rpc/register.proto";
 import "sso/rpc/login.proto";
