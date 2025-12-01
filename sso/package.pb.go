@@ -4,11 +4,9 @@
 // 	protoc        v5.29.3
 // source: sso/package.proto
 
-package sso
+package __
 
 import (
-	rpc "github.com/Unpakenman/protos/proto/sso/rpc"
-	rpc1 "github.com/username/Unpakenman/proto/sso/rpc"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -30,15 +28,15 @@ const file_sso_package_proto_rawDesc = "" +
 	"\x04Auth\x12K\n" +
 	"\bRegister\x12\x1e.proto.sso.rpc.RegisterRequest\x1a\x1f.proto.sso.rpc.RegisterResponse\x12H\n" +
 	"\aIsAdmin\x12\x1d.proto.sso.rpc.IsAdminRequest\x1a\x1e.proto.sso.rpc.IsAdminResponse\x12B\n" +
-	"\x05Login\x12\x1b.proto.sso.rpc.LoginRequest\x1a\x1c.proto.sso.rpc.LoginResponseB(Z&github.com/Unpakenman/protos/proto/ssob\x06proto3"
+	"\x05Login\x12\x1b.proto.sso.rpc.LoginRequest\x1a\x1c.proto.sso.rpc.LoginResponseB\x03Z\x01.b\x06proto3"
 
 var file_sso_package_proto_goTypes = []any{
-	(*rpc.RegisterRequest)(nil),  // 0: proto.sso.rpc.RegisterRequest
-	(*rpc1.IsAdminRequest)(nil),  // 1: proto.sso.rpc.IsAdminRequest
-	(*rpc.LoginRequest)(nil),     // 2: proto.sso.rpc.LoginRequest
-	(*rpc.RegisterResponse)(nil), // 3: proto.sso.rpc.RegisterResponse
-	(*rpc1.IsAdminResponse)(nil), // 4: proto.sso.rpc.IsAdminResponse
-	(*rpc.LoginResponse)(nil),    // 5: proto.sso.rpc.LoginResponse
+	(*RegisterRequest)(nil),  // 0: proto.sso.rpc.RegisterRequest
+	(*IsAdminRequest)(nil),   // 1: proto.sso.rpc.IsAdminRequest
+	(*LoginRequest)(nil),     // 2: proto.sso.rpc.LoginRequest
+	(*RegisterResponse)(nil), // 3: proto.sso.rpc.RegisterResponse
+	(*IsAdminResponse)(nil),  // 4: proto.sso.rpc.IsAdminResponse
+	(*LoginResponse)(nil),    // 5: proto.sso.rpc.LoginResponse
 }
 var file_sso_package_proto_depIdxs = []int32{
 	0, // 0: proto.sso.Auth.Register:input_type -> proto.sso.rpc.RegisterRequest
@@ -59,6 +57,9 @@ func file_sso_package_proto_init() {
 	if File_sso_package_proto != nil {
 		return
 	}
+	file_sso_rpc_register_proto_init()
+	file_sso_rpc_login_proto_init()
+	file_sso_rpc_isadmin_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

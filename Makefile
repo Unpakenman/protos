@@ -6,7 +6,7 @@ include bin-deps.mk
 
 .PHONY: generateprotocode
 run: ## generate proto code project
-	$ protoc -I proto proto/sso/package.proto --go_out=./proto --go_opt=paths=source_relative --go-grpc_out=./proto  --go-grpc_opt=paths=source_relative
+	$ protoc -I ./proto   --go_out=.   --go_opt=paths=source_relative   --go-grpc_out=.   --go-grpc_opt=paths=source_relative   proto/sso/package.proto
 
 
 
