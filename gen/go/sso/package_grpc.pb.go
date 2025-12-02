@@ -4,10 +4,11 @@
 // - protoc             v5.29.3
 // source: sso/package.proto
 
-package __
+package sso
 
 import (
 	context "context"
+	rpc "github.com/Unpakenman/protos/gen/go/sso/rpc"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -28,9 +29,9 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AuthClient interface {
-	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
-	IsAdmin(ctx context.Context, in *IsAdminRequest, opts ...grpc.CallOption) (*IsAdminResponse, error)
-	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+	Register(ctx context.Context, in *rpc.RegisterRequest, opts ...grpc.CallOption) (*rpc.RegisterResponse, error)
+	IsAdmin(ctx context.Context, in *rpc.IsAdminRequest, opts ...grpc.CallOption) (*rpc.IsAdminResponse, error)
+	Login(ctx context.Context, in *rpc.LoginRequest, opts ...grpc.CallOption) (*rpc.LoginResponse, error)
 }
 
 type authClient struct {
@@ -41,9 +42,9 @@ func NewAuthClient(cc grpc.ClientConnInterface) AuthClient {
 	return &authClient{cc}
 }
 
-func (c *authClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error) {
+func (c *authClient) Register(ctx context.Context, in *rpc.RegisterRequest, opts ...grpc.CallOption) (*rpc.RegisterResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(RegisterResponse)
+	out := new(rpc.RegisterResponse)
 	err := c.cc.Invoke(ctx, Auth_Register_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -51,9 +52,9 @@ func (c *authClient) Register(ctx context.Context, in *RegisterRequest, opts ...
 	return out, nil
 }
 
-func (c *authClient) IsAdmin(ctx context.Context, in *IsAdminRequest, opts ...grpc.CallOption) (*IsAdminResponse, error) {
+func (c *authClient) IsAdmin(ctx context.Context, in *rpc.IsAdminRequest, opts ...grpc.CallOption) (*rpc.IsAdminResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(IsAdminResponse)
+	out := new(rpc.IsAdminResponse)
 	err := c.cc.Invoke(ctx, Auth_IsAdmin_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -61,9 +62,9 @@ func (c *authClient) IsAdmin(ctx context.Context, in *IsAdminRequest, opts ...gr
 	return out, nil
 }
 
-func (c *authClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+func (c *authClient) Login(ctx context.Context, in *rpc.LoginRequest, opts ...grpc.CallOption) (*rpc.LoginResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(LoginResponse)
+	out := new(rpc.LoginResponse)
 	err := c.cc.Invoke(ctx, Auth_Login_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -75,9 +76,9 @@ func (c *authClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.C
 // All implementations must embed UnimplementedAuthServer
 // for forward compatibility.
 type AuthServer interface {
-	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
-	IsAdmin(context.Context, *IsAdminRequest) (*IsAdminResponse, error)
-	Login(context.Context, *LoginRequest) (*LoginResponse, error)
+	Register(context.Context, *rpc.RegisterRequest) (*rpc.RegisterResponse, error)
+	IsAdmin(context.Context, *rpc.IsAdminRequest) (*rpc.IsAdminResponse, error)
+	Login(context.Context, *rpc.LoginRequest) (*rpc.LoginResponse, error)
 	mustEmbedUnimplementedAuthServer()
 }
 
@@ -88,13 +89,13 @@ type AuthServer interface {
 // pointer dereference when methods are called.
 type UnimplementedAuthServer struct{}
 
-func (UnimplementedAuthServer) Register(context.Context, *RegisterRequest) (*RegisterResponse, error) {
+func (UnimplementedAuthServer) Register(context.Context, *rpc.RegisterRequest) (*rpc.RegisterResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Register not implemented")
 }
-func (UnimplementedAuthServer) IsAdmin(context.Context, *IsAdminRequest) (*IsAdminResponse, error) {
+func (UnimplementedAuthServer) IsAdmin(context.Context, *rpc.IsAdminRequest) (*rpc.IsAdminResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method IsAdmin not implemented")
 }
-func (UnimplementedAuthServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
+func (UnimplementedAuthServer) Login(context.Context, *rpc.LoginRequest) (*rpc.LoginResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Login not implemented")
 }
 func (UnimplementedAuthServer) mustEmbedUnimplementedAuthServer() {}
@@ -119,7 +120,7 @@ func RegisterAuthServer(s grpc.ServiceRegistrar, srv AuthServer) {
 }
 
 func _Auth_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterRequest)
+	in := new(rpc.RegisterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -131,13 +132,13 @@ func _Auth_Register_Handler(srv interface{}, ctx context.Context, dec func(inter
 		FullMethod: Auth_Register_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).Register(ctx, req.(*RegisterRequest))
+		return srv.(AuthServer).Register(ctx, req.(*rpc.RegisterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Auth_IsAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(IsAdminRequest)
+	in := new(rpc.IsAdminRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -149,13 +150,13 @@ func _Auth_IsAdmin_Handler(srv interface{}, ctx context.Context, dec func(interf
 		FullMethod: Auth_IsAdmin_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).IsAdmin(ctx, req.(*IsAdminRequest))
+		return srv.(AuthServer).IsAdmin(ctx, req.(*rpc.IsAdminRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Auth_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LoginRequest)
+	in := new(rpc.LoginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -167,7 +168,7 @@ func _Auth_Login_Handler(srv interface{}, ctx context.Context, dec func(interfac
 		FullMethod: Auth_Login_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).Login(ctx, req.(*LoginRequest))
+		return srv.(AuthServer).Login(ctx, req.(*rpc.LoginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
