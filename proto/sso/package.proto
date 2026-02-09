@@ -3,13 +3,13 @@ syntax = "proto3";
 package proto.sso;
 option go_package = "github.com/Unpakenman/protos/gen/go/sso";
 
-import "sso/rpc/register.proto";
-import "sso/rpc/login.proto";
-import "sso/rpc/isadmin.proto";
+import "sso/rpc/add_clinic.proto";
+import "sso/rpc/add_appointment.proto";
+import "sso/rpc/add_employee.proto";
 
 
-service Auth {
-  rpc Register(proto.sso.rpc.RegisterRequest) returns (proto.sso.rpc.RegisterResponse);
-  rpc IsAdmin(proto.sso.rpc.IsAdminRequest) returns (proto.sso.rpc.IsAdminResponse);
-  rpc Login(proto.sso.rpc.LoginRequest) returns (proto.sso.rpc.LoginResponse);
+service Clinics {
+  rpc AddClinic(proto.sso.rpc.AddClinicRequest) returns (proto.sso.rpc.AddClinicResponse);
+  rpc AddEmployee(proto.sso.rpc.AddEmployeeRequest) returns (proto.sso.rpc.AddEmployeeResponse);
+  rpc AddAppointment(proto.sso.rpc.AddAppointmentRequest) returns (proto.sso.rpc.AddAppointmentResponse);
 }

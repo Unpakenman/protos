@@ -25,27 +25,27 @@ var File_sso_package_proto protoreflect.FileDescriptor
 
 const file_sso_package_proto_rawDesc = "" +
 	"\n" +
-	"\x11sso/package.proto\x12\tproto.sso\x1a\x16sso/rpc/register.proto\x1a\x13sso/rpc/login.proto\x1a\x15sso/rpc/isadmin.proto2\xe1\x01\n" +
-	"\x04Auth\x12K\n" +
-	"\bRegister\x12\x1e.proto.sso.rpc.RegisterRequest\x1a\x1f.proto.sso.rpc.RegisterResponse\x12H\n" +
-	"\aIsAdmin\x12\x1d.proto.sso.rpc.IsAdminRequest\x1a\x1e.proto.sso.rpc.IsAdminResponse\x12B\n" +
-	"\x05Login\x12\x1b.proto.sso.rpc.LoginRequest\x1a\x1c.proto.sso.rpc.LoginResponseB)Z'github.com/Unpakenman/protos/gen/go/ssob\x06proto3"
+	"\x11sso/package.proto\x12\tproto.sso\x1a\x18sso/rpc/add_clinic.proto\x1a\x1dsso/rpc/add_appointment.proto\x1a\x1asso/rpc/add_employee.proto2\x8e\x02\n" +
+	"\aClinics\x12N\n" +
+	"\tAddClinic\x12\x1f.proto.sso.rpc.AddClinicRequest\x1a .proto.sso.rpc.AddClinicResponse\x12T\n" +
+	"\vAddEmployee\x12!.proto.sso.rpc.AddEmployeeRequest\x1a\".proto.sso.rpc.AddEmployeeResponse\x12]\n" +
+	"\x0eAddAppointment\x12$.proto.sso.rpc.AddAppointmentRequest\x1a%.proto.sso.rpc.AddAppointmentResponseB)Z'github.com/Unpakenman/protos/gen/go/ssob\x06proto3"
 
 var file_sso_package_proto_goTypes = []any{
-	(*rpc.RegisterRequest)(nil),  // 0: proto.sso.rpc.RegisterRequest
-	(*rpc.IsAdminRequest)(nil),   // 1: proto.sso.rpc.IsAdminRequest
-	(*rpc.LoginRequest)(nil),     // 2: proto.sso.rpc.LoginRequest
-	(*rpc.RegisterResponse)(nil), // 3: proto.sso.rpc.RegisterResponse
-	(*rpc.IsAdminResponse)(nil),  // 4: proto.sso.rpc.IsAdminResponse
-	(*rpc.LoginResponse)(nil),    // 5: proto.sso.rpc.LoginResponse
+	(*rpc.AddClinicRequest)(nil),       // 0: proto.sso.rpc.AddClinicRequest
+	(*rpc.AddEmployeeRequest)(nil),     // 1: proto.sso.rpc.AddEmployeeRequest
+	(*rpc.AddAppointmentRequest)(nil),  // 2: proto.sso.rpc.AddAppointmentRequest
+	(*rpc.AddClinicResponse)(nil),      // 3: proto.sso.rpc.AddClinicResponse
+	(*rpc.AddEmployeeResponse)(nil),    // 4: proto.sso.rpc.AddEmployeeResponse
+	(*rpc.AddAppointmentResponse)(nil), // 5: proto.sso.rpc.AddAppointmentResponse
 }
 var file_sso_package_proto_depIdxs = []int32{
-	0, // 0: proto.sso.Auth.Register:input_type -> proto.sso.rpc.RegisterRequest
-	1, // 1: proto.sso.Auth.IsAdmin:input_type -> proto.sso.rpc.IsAdminRequest
-	2, // 2: proto.sso.Auth.Login:input_type -> proto.sso.rpc.LoginRequest
-	3, // 3: proto.sso.Auth.Register:output_type -> proto.sso.rpc.RegisterResponse
-	4, // 4: proto.sso.Auth.IsAdmin:output_type -> proto.sso.rpc.IsAdminResponse
-	5, // 5: proto.sso.Auth.Login:output_type -> proto.sso.rpc.LoginResponse
+	0, // 0: proto.sso.Clinics.AddClinic:input_type -> proto.sso.rpc.AddClinicRequest
+	1, // 1: proto.sso.Clinics.AddEmployee:input_type -> proto.sso.rpc.AddEmployeeRequest
+	2, // 2: proto.sso.Clinics.AddAppointment:input_type -> proto.sso.rpc.AddAppointmentRequest
+	3, // 3: proto.sso.Clinics.AddClinic:output_type -> proto.sso.rpc.AddClinicResponse
+	4, // 4: proto.sso.Clinics.AddEmployee:output_type -> proto.sso.rpc.AddEmployeeResponse
+	5, // 5: proto.sso.Clinics.AddAppointment:output_type -> proto.sso.rpc.AddAppointmentResponse
 	3, // [3:6] is the sub-list for method output_type
 	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

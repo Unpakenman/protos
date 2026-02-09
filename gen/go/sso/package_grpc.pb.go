@@ -20,177 +20,177 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Auth_Register_FullMethodName = "/proto.sso.Auth/Register"
-	Auth_IsAdmin_FullMethodName  = "/proto.sso.Auth/IsAdmin"
-	Auth_Login_FullMethodName    = "/proto.sso.Auth/Login"
+	Clinics_AddClinic_FullMethodName      = "/proto.sso.Clinics/AddClinic"
+	Clinics_AddEmployee_FullMethodName    = "/proto.sso.Clinics/AddEmployee"
+	Clinics_AddAppointment_FullMethodName = "/proto.sso.Clinics/AddAppointment"
 )
 
-// AuthClient is the client API for Auth service.
+// ClinicsClient is the client API for Clinics service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type AuthClient interface {
-	Register(ctx context.Context, in *rpc.RegisterRequest, opts ...grpc.CallOption) (*rpc.RegisterResponse, error)
-	IsAdmin(ctx context.Context, in *rpc.IsAdminRequest, opts ...grpc.CallOption) (*rpc.IsAdminResponse, error)
-	Login(ctx context.Context, in *rpc.LoginRequest, opts ...grpc.CallOption) (*rpc.LoginResponse, error)
+type ClinicsClient interface {
+	AddClinic(ctx context.Context, in *rpc.AddClinicRequest, opts ...grpc.CallOption) (*rpc.AddClinicResponse, error)
+	AddEmployee(ctx context.Context, in *rpc.AddEmployeeRequest, opts ...grpc.CallOption) (*rpc.AddEmployeeResponse, error)
+	AddAppointment(ctx context.Context, in *rpc.AddAppointmentRequest, opts ...grpc.CallOption) (*rpc.AddAppointmentResponse, error)
 }
 
-type authClient struct {
+type clinicsClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewAuthClient(cc grpc.ClientConnInterface) AuthClient {
-	return &authClient{cc}
+func NewClinicsClient(cc grpc.ClientConnInterface) ClinicsClient {
+	return &clinicsClient{cc}
 }
 
-func (c *authClient) Register(ctx context.Context, in *rpc.RegisterRequest, opts ...grpc.CallOption) (*rpc.RegisterResponse, error) {
+func (c *clinicsClient) AddClinic(ctx context.Context, in *rpc.AddClinicRequest, opts ...grpc.CallOption) (*rpc.AddClinicResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(rpc.RegisterResponse)
-	err := c.cc.Invoke(ctx, Auth_Register_FullMethodName, in, out, cOpts...)
+	out := new(rpc.AddClinicResponse)
+	err := c.cc.Invoke(ctx, Clinics_AddClinic_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *authClient) IsAdmin(ctx context.Context, in *rpc.IsAdminRequest, opts ...grpc.CallOption) (*rpc.IsAdminResponse, error) {
+func (c *clinicsClient) AddEmployee(ctx context.Context, in *rpc.AddEmployeeRequest, opts ...grpc.CallOption) (*rpc.AddEmployeeResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(rpc.IsAdminResponse)
-	err := c.cc.Invoke(ctx, Auth_IsAdmin_FullMethodName, in, out, cOpts...)
+	out := new(rpc.AddEmployeeResponse)
+	err := c.cc.Invoke(ctx, Clinics_AddEmployee_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *authClient) Login(ctx context.Context, in *rpc.LoginRequest, opts ...grpc.CallOption) (*rpc.LoginResponse, error) {
+func (c *clinicsClient) AddAppointment(ctx context.Context, in *rpc.AddAppointmentRequest, opts ...grpc.CallOption) (*rpc.AddAppointmentResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(rpc.LoginResponse)
-	err := c.cc.Invoke(ctx, Auth_Login_FullMethodName, in, out, cOpts...)
+	out := new(rpc.AddAppointmentResponse)
+	err := c.cc.Invoke(ctx, Clinics_AddAppointment_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// AuthServer is the server API for Auth service.
-// All implementations must embed UnimplementedAuthServer
+// ClinicsServer is the server API for Clinics service.
+// All implementations must embed UnimplementedClinicsServer
 // for forward compatibility.
-type AuthServer interface {
-	Register(context.Context, *rpc.RegisterRequest) (*rpc.RegisterResponse, error)
-	IsAdmin(context.Context, *rpc.IsAdminRequest) (*rpc.IsAdminResponse, error)
-	Login(context.Context, *rpc.LoginRequest) (*rpc.LoginResponse, error)
-	mustEmbedUnimplementedAuthServer()
+type ClinicsServer interface {
+	AddClinic(context.Context, *rpc.AddClinicRequest) (*rpc.AddClinicResponse, error)
+	AddEmployee(context.Context, *rpc.AddEmployeeRequest) (*rpc.AddEmployeeResponse, error)
+	AddAppointment(context.Context, *rpc.AddAppointmentRequest) (*rpc.AddAppointmentResponse, error)
+	mustEmbedUnimplementedClinicsServer()
 }
 
-// UnimplementedAuthServer must be embedded to have
+// UnimplementedClinicsServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedAuthServer struct{}
+type UnimplementedClinicsServer struct{}
 
-func (UnimplementedAuthServer) Register(context.Context, *rpc.RegisterRequest) (*rpc.RegisterResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method Register not implemented")
+func (UnimplementedClinicsServer) AddClinic(context.Context, *rpc.AddClinicRequest) (*rpc.AddClinicResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method AddClinic not implemented")
 }
-func (UnimplementedAuthServer) IsAdmin(context.Context, *rpc.IsAdminRequest) (*rpc.IsAdminResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method IsAdmin not implemented")
+func (UnimplementedClinicsServer) AddEmployee(context.Context, *rpc.AddEmployeeRequest) (*rpc.AddEmployeeResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method AddEmployee not implemented")
 }
-func (UnimplementedAuthServer) Login(context.Context, *rpc.LoginRequest) (*rpc.LoginResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method Login not implemented")
+func (UnimplementedClinicsServer) AddAppointment(context.Context, *rpc.AddAppointmentRequest) (*rpc.AddAppointmentResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method AddAppointment not implemented")
 }
-func (UnimplementedAuthServer) mustEmbedUnimplementedAuthServer() {}
-func (UnimplementedAuthServer) testEmbeddedByValue()              {}
+func (UnimplementedClinicsServer) mustEmbedUnimplementedClinicsServer() {}
+func (UnimplementedClinicsServer) testEmbeddedByValue()                 {}
 
-// UnsafeAuthServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to AuthServer will
+// UnsafeClinicsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ClinicsServer will
 // result in compilation errors.
-type UnsafeAuthServer interface {
-	mustEmbedUnimplementedAuthServer()
+type UnsafeClinicsServer interface {
+	mustEmbedUnimplementedClinicsServer()
 }
 
-func RegisterAuthServer(s grpc.ServiceRegistrar, srv AuthServer) {
-	// If the following call panics, it indicates UnimplementedAuthServer was
+func RegisterClinicsServer(s grpc.ServiceRegistrar, srv ClinicsServer) {
+	// If the following call panics, it indicates UnimplementedClinicsServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&Auth_ServiceDesc, srv)
+	s.RegisterService(&Clinics_ServiceDesc, srv)
 }
 
-func _Auth_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(rpc.RegisterRequest)
+func _Clinics_AddClinic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(rpc.AddClinicRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServer).Register(ctx, in)
+		return srv.(ClinicsServer).AddClinic(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Auth_Register_FullMethodName,
+		FullMethod: Clinics_AddClinic_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).Register(ctx, req.(*rpc.RegisterRequest))
+		return srv.(ClinicsServer).AddClinic(ctx, req.(*rpc.AddClinicRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Auth_IsAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(rpc.IsAdminRequest)
+func _Clinics_AddEmployee_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(rpc.AddEmployeeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServer).IsAdmin(ctx, in)
+		return srv.(ClinicsServer).AddEmployee(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Auth_IsAdmin_FullMethodName,
+		FullMethod: Clinics_AddEmployee_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).IsAdmin(ctx, req.(*rpc.IsAdminRequest))
+		return srv.(ClinicsServer).AddEmployee(ctx, req.(*rpc.AddEmployeeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Auth_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(rpc.LoginRequest)
+func _Clinics_AddAppointment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(rpc.AddAppointmentRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AuthServer).Login(ctx, in)
+		return srv.(ClinicsServer).AddAppointment(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Auth_Login_FullMethodName,
+		FullMethod: Clinics_AddAppointment_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServer).Login(ctx, req.(*rpc.LoginRequest))
+		return srv.(ClinicsServer).AddAppointment(ctx, req.(*rpc.AddAppointmentRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Auth_ServiceDesc is the grpc.ServiceDesc for Auth service.
+// Clinics_ServiceDesc is the grpc.ServiceDesc for Clinics service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Auth_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "proto.sso.Auth",
-	HandlerType: (*AuthServer)(nil),
+var Clinics_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "proto.sso.Clinics",
+	HandlerType: (*ClinicsServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Register",
-			Handler:    _Auth_Register_Handler,
+			MethodName: "AddClinic",
+			Handler:    _Clinics_AddClinic_Handler,
 		},
 		{
-			MethodName: "IsAdmin",
-			Handler:    _Auth_IsAdmin_Handler,
+			MethodName: "AddEmployee",
+			Handler:    _Clinics_AddEmployee_Handler,
 		},
 		{
-			MethodName: "Login",
-			Handler:    _Auth_Login_Handler,
+			MethodName: "AddAppointment",
+			Handler:    _Clinics_AddAppointment_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

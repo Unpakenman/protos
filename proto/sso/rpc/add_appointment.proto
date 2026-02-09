@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package proto.sso.rpc;
+option go_package = "github.com/Unpakenman/protos/gen/go/sso/rpc";
+
+message AddAppointmentRequest{
+  //clinic_id
+  int64 clinic_id = 1;
+  //patient_id
+  int64 patient_id = 2;
+  //employee_id
+  int64 employee_id = 3;
+  //appointment_dttm
+  string appointment_dttm = 4;
+  //appointment_dttm
+  string comment = 5;
+}
+message AddAppointmentResponse{
+  //jwt токен пользователя
+  int64 appointment_id= 1;
+}

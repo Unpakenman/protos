@@ -11,9 +11,9 @@ run: ## generate proto code project
         --go_out=gen/go --go_opt=paths=source_relative \
         --go-grpc_out=gen/go --go-grpc_opt=paths=source_relative \
         proto/sso/package.proto \
-        proto/sso/rpc/register.proto \
-        proto/sso/rpc/login.proto \
-        proto/sso/rpc/isadmin.proto
+        proto/sso/rpc/add_clinic.proto \
+        proto/sso/rpc/add_appointment.proto \
+        proto/sso/rpc/add_employee.proto
 
 
 

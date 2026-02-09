@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package proto.sso.rpc;
+option go_package = "github.com/Unpakenman/protos/gen/go/sso/rpc";
+
+message AddClinicRequest{
+  //Clinic address
+  string clinic_address = 1;
+  //Clinic phone
+  string phone = 2;
+  //Clinic email
+  string email = 3;
+  //Clinic opening houts
+  string opening_hours = 4;
+}
+message AddClinicResponse{
+  //id клиники
+  int64 clinic_id = 1;
+}
+
+
+
