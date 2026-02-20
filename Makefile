@@ -4,6 +4,7 @@ LOCAL_BIN=$(CURDIR)/bin
 
 include bin-deps.mk
 
+
 .PHONY: generateprotocode
 run: ## generate proto code project
 	$ protoc \
