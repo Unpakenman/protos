@@ -73,16 +73,15 @@ func (c *clinicsClient) AddAppointment(ctx context.Context, in *rpc.AddAppointme
 }
 
 // ClinicsServer is the server API for Clinics service.
-// All implementations must embed UnimplementedClinicsServer
+// All implementations should embed UnimplementedClinicsServer
 // for forward compatibility.
 type ClinicsServer interface {
 	AddClinic(context.Context, *rpc.AddClinicRequest) (*rpc.AddClinicResponse, error)
 	AddEmployee(context.Context, *rpc.AddEmployeeRequest) (*rpc.AddEmployeeResponse, error)
 	AddAppointment(context.Context, *rpc.AddAppointmentRequest) (*rpc.AddAppointmentResponse, error)
-	mustEmbedUnimplementedClinicsServer()
 }
 
-// UnimplementedClinicsServer must be embedded to have
+// UnimplementedClinicsServer should be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
@@ -98,8 +97,7 @@ func (UnimplementedClinicsServer) AddEmployee(context.Context, *rpc.AddEmployeeR
 func (UnimplementedClinicsServer) AddAppointment(context.Context, *rpc.AddAppointmentRequest) (*rpc.AddAppointmentResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AddAppointment not implemented")
 }
-func (UnimplementedClinicsServer) mustEmbedUnimplementedClinicsServer() {}
-func (UnimplementedClinicsServer) testEmbeddedByValue()                 {}
+func (UnimplementedClinicsServer) testEmbeddedByValue() {}
 
 // UnsafeClinicsServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to ClinicsServer will

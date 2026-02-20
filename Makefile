@@ -10,6 +10,7 @@ run: ## generate proto code project
         -I proto \
         --go_out=gen/go --go_opt=paths=source_relative \
         --go-grpc_out=gen/go --go-grpc_opt=paths=source_relative \
+        --go-grpc_opt=require_unimplemented_servers=false \
         proto/sso/package.proto \
         proto/sso/rpc/add_clinic.proto \
         proto/sso/rpc/add_appointment.proto \
