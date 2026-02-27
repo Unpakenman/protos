@@ -13,6 +13,7 @@ message AddClinicRequest{
   //Clinic opening houts
   string opening_hours = 4;
 }
+
 message AddClinicResponse{
   //id клиники
   int64 clinic_id = 1;
