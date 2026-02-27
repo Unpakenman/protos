@@ -29,10 +29,12 @@ type AddAppointmentRequest struct {
 	PatientId int64 `protobuf:"varint,2,opt,name=patient_id,json=patientId,proto3" json:"patient_id,omitempty"`
 	// employee_id
 	EmployeeId int64 `protobuf:"varint,3,opt,name=employee_id,json=employeeId,proto3" json:"employee_id,omitempty"`
-	// appointment_dttm
-	AppointmentDttm string `protobuf:"bytes,4,opt,name=appointment_dttm,json=appointmentDttm,proto3" json:"appointment_dttm,omitempty"`
-	// appointment_dttm
-	Comment       string `protobuf:"bytes,5,opt,name=comment,proto3" json:"comment,omitempty"`
+	// start_at
+	StartAt string `protobuf:"bytes,4,opt,name=start_at,json=startAt,proto3" json:"start_at,omitempty"`
+	// end_at
+	EndAt string `protobuf:"bytes,5,opt,name=end_at,json=endAt,proto3" json:"end_at,omitempty"`
+	// comment
+	Comment       string `protobuf:"bytes,6,opt,name=comment,proto3" json:"comment,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -88,9 +90,16 @@ func (x *AddAppointmentRequest) GetEmployeeId() int64 {
 	return 0
 }
 
-func (x *AddAppointmentRequest) GetAppointmentDttm() string {
+func (x *AddAppointmentRequest) GetStartAt() string {
 	if x != nil {
-		return x.AppointmentDttm
+		return x.StartAt
+	}
+	return ""
+}
+
+func (x *AddAppointmentRequest) GetEndAt() string {
+	if x != nil {
+		return x.EndAt
 	}
 	return ""
 }
@@ -103,9 +112,8 @@ func (x *AddAppointmentRequest) GetComment() string {
 }
 
 type AddAppointmentResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// jwt токен пользователя
-	AppointmentId int64 `protobuf:"varint,1,opt,name=appointment_id,json=appointmentId,proto3" json:"appointment_id,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AppointmentId int64                  `protobuf:"varint,1,opt,name=appointment_id,json=appointmentId,proto3" json:"appointment_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -151,15 +159,16 @@ var File_sso_rpc_add_appointment_proto protoreflect.FileDescriptor
 
 const file_sso_rpc_add_appointment_proto_rawDesc = "" +
 	"\n" +
-	"\x1dsso/rpc/add_appointment.proto\x12\rproto.sso.rpc\"\xb9\x01\n" +
+	"\x1dsso/rpc/add_appointment.proto\x12\rproto.sso.rpc\"\xc0\x01\n" +
 	"\x15AddAppointmentRequest\x12\x1b\n" +
 	"\tclinic_id\x18\x01 \x01(\x03R\bclinicId\x12\x1d\n" +
 	"\n" +
 	"patient_id\x18\x02 \x01(\x03R\tpatientId\x12\x1f\n" +
 	"\vemployee_id\x18\x03 \x01(\x03R\n" +
-	"employeeId\x12)\n" +
-	"\x10appointment_dttm\x18\x04 \x01(\tR\x0fappointmentDttm\x12\x18\n" +
-	"\acomment\x18\x05 \x01(\tR\acomment\"?\n" +
+	"employeeId\x12\x19\n" +
+	"\bstart_at\x18\x04 \x01(\tR\astartAt\x12\x15\n" +
+	"\x06end_at\x18\x05 \x01(\tR\x05endAt\x12\x18\n" +
+	"\acomment\x18\x06 \x01(\tR\acomment\"?\n" +
 	"\x16AddAppointmentResponse\x12%\n" +
 	"\x0eappointment_id\x18\x01 \x01(\x03R\rappointmentIdB-Z+github.com/Unpakenman/protos/gen/go/sso/rpcb\x06proto3"
 
