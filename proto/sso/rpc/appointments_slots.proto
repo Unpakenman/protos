@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package proto.sso.rpc;
+option go_package = "github.com/Unpakenman/protos/gen/go/sso/rpc";
+
+message AppointmentsSlotsRequest{
+  //clinic_id
+  int64 employee_id = 1;
+  //patient_id
+  string appointment_date = 2;
+}
+
+
+message AppointmentsSlotsResponse{
+  message Appointments{
+    string slot_start= 1;
+    string slot_end = 2;
+}
+  repeated Appointments appointments = 1;
+}

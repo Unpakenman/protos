@@ -6,10 +6,12 @@ option go_package = "github.com/Unpakenman/protos/gen/go/sso";
 import "sso/rpc/add_clinic.proto";
 import "sso/rpc/add_appointment.proto";
 import "sso/rpc/add_employee.proto";
+import "sso/rpc/appointments_slots.proto";
 
 
 service Clinics {
   rpc AddClinic(proto.sso.rpc.AddClinicRequest) returns (proto.sso.rpc.AddClinicResponse);
   rpc AddEmployee(proto.sso.rpc.AddEmployeeRequest) returns (proto.sso.rpc.AddEmployeeResponse);
   rpc AddAppointment(proto.sso.rpc.AddAppointmentRequest) returns (proto.sso.rpc.AddAppointmentResponse);
+  rpc AppointmentsSlotsRequest(proto.sso.rpc.AppointmentsSlotsRequest) returns (proto.sso.rpc.AppointmentsSlotsResponse);
 }

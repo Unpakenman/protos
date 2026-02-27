@@ -15,7 +15,8 @@ run: ## generate proto code project
         proto/sso/package.proto \
         proto/sso/rpc/add_clinic.proto \
         proto/sso/rpc/add_appointment.proto \
-        proto/sso/rpc/add_employee.proto
+        proto/sso/rpc/add_employee.proto \
+        proto/sso/rpc/appointments_slots.proto
 
 
 

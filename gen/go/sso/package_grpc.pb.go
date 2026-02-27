@@ -20,9 +20,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Clinics_AddClinic_FullMethodName      = "/proto.sso.Clinics/AddClinic"
-	Clinics_AddEmployee_FullMethodName    = "/proto.sso.Clinics/AddEmployee"
-	Clinics_AddAppointment_FullMethodName = "/proto.sso.Clinics/AddAppointment"
+	Clinics_AddClinic_FullMethodName                = "/proto.sso.Clinics/AddClinic"
+	Clinics_AddEmployee_FullMethodName              = "/proto.sso.Clinics/AddEmployee"
+	Clinics_AddAppointment_FullMethodName           = "/proto.sso.Clinics/AddAppointment"
+	Clinics_AppointmentsSlotsRequest_FullMethodName = "/proto.sso.Clinics/AppointmentsSlotsRequest"
 )
 
 // ClinicsClient is the client API for Clinics service.
@@ -32,6 +33,7 @@ type ClinicsClient interface {
 	AddClinic(ctx context.Context, in *rpc.AddClinicRequest, opts ...grpc.CallOption) (*rpc.AddClinicResponse, error)
 	AddEmployee(ctx context.Context, in *rpc.AddEmployeeRequest, opts ...grpc.CallOption) (*rpc.AddEmployeeResponse, error)
 	AddAppointment(ctx context.Context, in *rpc.AddAppointmentRequest, opts ...grpc.CallOption) (*rpc.AddAppointmentResponse, error)
+	AppointmentsSlotsRequest(ctx context.Context, in *rpc.AppointmentsSlotsRequest, opts ...grpc.CallOption) (*rpc.AppointmentsSlotsResponse, error)
 }
 
 type clinicsClient struct {
@@ -72,6 +74,16 @@ func (c *clinicsClient) AddAppointment(ctx context.Context, in *rpc.AddAppointme
 	return out, nil
 }
 
+func (c *clinicsClient) AppointmentsSlotsRequest(ctx context.Context, in *rpc.AppointmentsSlotsRequest, opts ...grpc.CallOption) (*rpc.AppointmentsSlotsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(rpc.AppointmentsSlotsResponse)
+	err := c.cc.Invoke(ctx, Clinics_AppointmentsSlotsRequest_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ClinicsServer is the server API for Clinics service.
 // All implementations should embed UnimplementedClinicsServer
 // for forward compatibility.
@@ -79,6 +91,7 @@ type ClinicsServer interface {
 	AddClinic(context.Context, *rpc.AddClinicRequest) (*rpc.AddClinicResponse, error)
 	AddEmployee(context.Context, *rpc.AddEmployeeRequest) (*rpc.AddEmployeeResponse, error)
 	AddAppointment(context.Context, *rpc.AddAppointmentRequest) (*rpc.AddAppointmentResponse, error)
+	AppointmentsSlotsRequest(context.Context, *rpc.AppointmentsSlotsRequest) (*rpc.AppointmentsSlotsResponse, error)
 }
 
 // UnimplementedClinicsServer should be embedded to have
@@ -96,6 +109,9 @@ func (UnimplementedClinicsServer) AddEmployee(context.Context, *rpc.AddEmployeeR
 }
 func (UnimplementedClinicsServer) AddAppointment(context.Context, *rpc.AddAppointmentRequest) (*rpc.AddAppointmentResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AddAppointment not implemented")
+}
+func (UnimplementedClinicsServer) AppointmentsSlotsRequest(context.Context, *rpc.AppointmentsSlotsRequest) (*rpc.AppointmentsSlotsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method AppointmentsSlotsRequest not implemented")
 }
 func (UnimplementedClinicsServer) testEmbeddedByValue() {}
 
@@ -171,6 +187,24 @@ func _Clinics_AddAppointment_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Clinics_AppointmentsSlotsRequest_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(rpc.AppointmentsSlotsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClinicsServer).AppointmentsSlotsRequest(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Clinics_AppointmentsSlotsRequest_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClinicsServer).AppointmentsSlotsRequest(ctx, req.(*rpc.AppointmentsSlotsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Clinics_ServiceDesc is the grpc.ServiceDesc for Clinics service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -189,6 +223,10 @@ var Clinics_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddAppointment",
 			Handler:    _Clinics_AddAppointment_Handler,
+		},
+		{
+			MethodName: "AppointmentsSlotsRequest",
+			Handler:    _Clinics_AppointmentsSlotsRequest_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
