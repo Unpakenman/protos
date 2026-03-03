@@ -12,8 +12,8 @@ message AddAppointmentRequest{
   int64 employee_id = 3;
   //start_at
   string start_at = 4;
-  //end_at
-  string end_at = 5;
+  //массив id услуг
+  repeated int64 servicesIds = 5 ;
   //comment
   string comment = 6;
 }

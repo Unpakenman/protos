@@ -31,8 +31,8 @@ type AddAppointmentRequest struct {
 	EmployeeId int64 `protobuf:"varint,3,opt,name=employee_id,json=employeeId,proto3" json:"employee_id,omitempty"`
 	// start_at
 	StartAt string `protobuf:"bytes,4,opt,name=start_at,json=startAt,proto3" json:"start_at,omitempty"`
-	// end_at
-	EndAt string `protobuf:"bytes,5,opt,name=end_at,json=endAt,proto3" json:"end_at,omitempty"`
+	// массив id услуг
+	ServicesIds []int64 `protobuf:"varint,5,rep,packed,name=servicesIds,proto3" json:"servicesIds,omitempty"`
 	// comment
 	Comment       string `protobuf:"bytes,6,opt,name=comment,proto3" json:"comment,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -97,11 +97,11 @@ func (x *AddAppointmentRequest) GetStartAt() string {
 	return ""
 }
 
-func (x *AddAppointmentRequest) GetEndAt() string {
+func (x *AddAppointmentRequest) GetServicesIds() []int64 {
 	if x != nil {
-		return x.EndAt
+		return x.ServicesIds
 	}
-	return ""
+	return nil
 }
 
 func (x *AddAppointmentRequest) GetComment() string {
@@ -159,15 +159,15 @@ var File_sso_rpc_add_appointment_proto protoreflect.FileDescriptor
 
 const file_sso_rpc_add_appointment_proto_rawDesc = "" +
 	"\n" +
-	"\x1dsso/rpc/add_appointment.proto\x12\rproto.sso.rpc\"\xc0\x01\n" +
+	"\x1dsso/rpc/add_appointment.proto\x12\rproto.sso.rpc\"\xcb\x01\n" +
 	"\x15AddAppointmentRequest\x12\x1b\n" +
 	"\tclinic_id\x18\x01 \x01(\x03R\bclinicId\x12\x1d\n" +
 	"\n" +
 	"patient_id\x18\x02 \x01(\x03R\tpatientId\x12\x1f\n" +
 	"\vemployee_id\x18\x03 \x01(\x03R\n" +
 	"employeeId\x12\x19\n" +
-	"\bstart_at\x18\x04 \x01(\tR\astartAt\x12\x15\n" +
-	"\x06end_at\x18\x05 \x01(\tR\x05endAt\x12\x18\n" +
+	"\bstart_at\x18\x04 \x01(\tR\astartAt\x12 \n" +
+	"\vservicesIds\x18\x05 \x03(\x03R\vservicesIds\x12\x18\n" +
 	"\acomment\x18\x06 \x01(\tR\acomment\"?\n" +
 	"\x16AddAppointmentResponse\x12%\n" +
 	"\x0eappointment_id\x18\x01 \x01(\x03R\rappointmentIdB-Z+github.com/Unpakenman/protos/gen/go/sso/rpcb\x06proto3"
