@@ -1,5 +1,4 @@
 .DEFAULT_GOAL := help
-
 LOCAL_BIN=$(CURDIR)/bin
 
 include bin-deps.mk
