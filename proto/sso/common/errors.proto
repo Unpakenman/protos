@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package proto.sso.errors;
+option go_package = "github.com/Unpakenman/protos/gen/go/sso/errors";
+
+
+message DateTimeErrorDetails{
+}
